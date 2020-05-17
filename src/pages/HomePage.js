@@ -1,32 +1,21 @@
-import React, { useState, useEffect }  from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect }  from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/userActions';
 
-class HomePage extends React.Component {
-  componentDidMount() {
-    this.props.login("admin", "admin");
-  }
+const HomePage = props => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
 
-  render() {
-    return (
-      <>
-        <h1>Home Page...</h1>
-        <h2>Welcome {this.props.user.name ? this.props.user.name : "loading"}</h2>
-      </>
-    )
-  }
+  useEffect(() => {
+    dispatch(login("http://localhost:3000", "admin", "admin"));
+  }, []);
+
+  return (
+    <>
+      <h1>Home Page...</h1>
+      <h2>Welcome {user.name ? user.name : "loading"}</h2>
+    </>
+  )
 }
 
-const mapStateToProps = state => {
-  return ({
-    user: state.user
-  })
-}
-
-const mapDispatchToProps = dispatch => {
-  return ({
-    login: (name, password) => dispatch(login("http://localhost:3000", name, password))
-  })
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default HomePage;
