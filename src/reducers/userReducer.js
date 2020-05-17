@@ -1,6 +1,8 @@
 const userReducer = (
   state = {
+    id: "",
     name: "",
+    email: "",
     admin: false,
     inProgress: false,
     token: "",
@@ -10,18 +12,23 @@ const userReducer = (
       case 'LOGGING_IN':
         return {
           ...state,
-          name: action.name,
+          name: action.payload.name,
           inProgress: true
         }
       case 'LOGGED_IN':
         return {
-          ...state,
           inProgress: false,
           loggedIn: true,
-          token: action.token,
-          admin: action.admin
+          id: action.id,
+          name: action.payload.name,
+          email: action.payload.email,
+          admin: action.payload.admin,
+          token: action.payload.token,
         }
       default:
+        console.log("Unexpected action dispatched...");
         return state;
     }
   }
+
+  export default userReducer;

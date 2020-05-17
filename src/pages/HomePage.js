@@ -1,30 +1,32 @@
 import React, { useState, useEffect }  from 'react';
+import { connect } from 'react-redux';
+import { login } from '../actions/userActions';
 
-const HomePage = props => {
-  const [userName, setUserName] = useState('');
+class HomePage extends React.Component {
+  componentDidMount() {
+    this.props.login("admin", "admin");
+  }
 
-  useEffect(() => {
-    const configurationObject = {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        username: "admin",
-        password: "admin"
-      })
-    }
-
-    fetch("http://localhost:3000/login", configurationObject)
-      .then(response => response.json()) 
-      .then(json => console.dir(json));
-  });
-
-  return (
-    <h1>Home Page...</h1>
-  )
+  render() {
+    return (
+      <>
+        <h1>Home Page...</h1>
+        <h2>Welcome {this.props.user.name ? this.props.user.name : "loading"}</h2>
+      </>
+    )
+  }
 }
 
-export default HomePage;
+const mapStateToProps = state => {
+  return ({
+    user: state.user
+  })
+}
+
+const mapDispatchToProps = dispatch => {
+  return ({
+    login: (name, password) => dispatch(login("http://localhost:3000", name, password))
+  })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
