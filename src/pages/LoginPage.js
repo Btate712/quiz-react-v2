@@ -23,7 +23,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <label>Username:
+      <label className="plain-text">Username:
         <input 
           className="login"
           type="text" 
@@ -31,7 +31,7 @@ const LoginPage = () => {
           value={input.username} 
           name="username" />
       </label>
-      <label>Password:
+      <label className="plain-text">Password:
         <input 
           className="login"
           type="password" 
