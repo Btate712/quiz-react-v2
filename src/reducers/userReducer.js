@@ -6,11 +6,15 @@ const userReducer = (
     admin: false,
     inProgress: false,
     token: "",
-    loggedIn: false
+    loggedIn: false,
+    initialized: false
   }, action) => {
     switch(action.type) {
       case 'INITIALIZE_USER': 
-        return state;
+        return {
+          ...state,
+          initialized: true
+        };
       case 'LOGGING_IN':
         return {
           ...state,

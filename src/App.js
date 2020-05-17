@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import { initializeUser } from './actions/userActions';
@@ -8,15 +8,22 @@ import { initializeUser } from './actions/userActions';
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(initializeUser(), []));
-
   const user = useSelector(state => state.user);
+
+  if(!user.initialized) {
+    console.log("initializing user");
+    dispatch(initializeUser(), []);
+  }
+
+  const { loggedIn } = user
 
   return (
     <BrowserRouter>
       <div className="App">
-        <PrivateRoute exact path="/" component={HomePage} loggedIn={ user ? user.loggedIn : false } />
-        <Route path="/login" component={LoginPage} />
+        <Switch>
+          <PrivateRoute exact path="/" component={HomePage} loggedIn={loggedIn} />
+          <Route path="/login" component={LoginPage} />
+        </Switch>
       </div>
     </BrowserRouter>
   );
