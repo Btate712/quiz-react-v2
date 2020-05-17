@@ -2,7 +2,7 @@ import React, { useEffect }  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/userActions';
 
-const HomePage = props => {
+const HomePage = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
 

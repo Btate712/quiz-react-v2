@@ -9,6 +9,8 @@ const userReducer = (
     loggedIn: false
   }, action) => {
     switch(action.type) {
+      case 'INITIALIZE_USER': 
+        return state;
       case 'LOGGING_IN':
         return {
           ...state,
@@ -26,7 +28,6 @@ const userReducer = (
           token: action.payload.token,
         }
       default:
-        console.log("Unexpected action dispatched...");
         return state;
     }
   }
