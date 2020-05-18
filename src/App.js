@@ -22,10 +22,12 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Route path="/"><PageTemplate user={user} /></Route>
-        <Switch>
-          <PrivateRoute exact path="/" component={HomePage} loggedIn={loggedIn} />
-          <Route path="/login" component={LoginPage} />
-        </Switch>
+        <div className="Main">
+          <Switch>
+            <PrivateRoute exact path="/" component={HomePage} loggedIn={loggedIn} />
+            <Route path="/login" component={LoginPage} />
+          </Switch>
+        </div>
       </div>
     </BrowserRouter>
   );

@@ -8,10 +8,7 @@ const PageTemplate = props => {
       </div>
       <div className="menu">
         <ul>
-          <li className="menu-option">Option 1</li>
-          <li className="menu-option">Option 2</li>
-          <li className="menu-option">Option 3</li>
-          <li className="menu-option">Option 4</li>
+          <li className="menu-option">Register</li>
         </ul>
       </div>
     </>

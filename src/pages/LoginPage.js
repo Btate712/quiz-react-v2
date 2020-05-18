@@ -22,7 +22,7 @@ const LoginPage = () => {
   }
 
   return (
-    <>
+    <div className="login-container">
       <label className="plain-text">Username:
         <input 
           className="login"
@@ -41,7 +41,7 @@ const LoginPage = () => {
       </label>
       <button onClick={handleLogin} className="login" >Log In</button>
       {loggedIn ? <Redirect to="/" /> : ""}
-    </>
+    </div>
   )
 }
 
