@@ -3,14 +3,14 @@ import React from 'react';
 const PageTemplate = props => {
   return (
     <>
-      <div className="header-section">
+      <header className="header-section">
         <h1>Study With Quizzes</h1>
-      </div>
-      <div className="menu">
+      </header>
+      <nav className="navbar">
         <ul>
-          <li className="menu-option">Register</li>
+          <li className="navbar-nav">Register</li>
         </ul>
-      </div>
+      </nav>
     </>
   );
 }

@@ -22,26 +22,32 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="login-container">
-      <label className="plain-text">Username:
-        <input 
-          className="login"
-          type="text" 
-          onChange={handleInputChange} 
-          value={input.username} 
-          name="username" />
-      </label>
-      <label className="plain-text">Password:
-        <input 
-          className="login"
-          type="password" 
-          onChange={handleInputChange} 
-          value={input.password} 
-          name="password" />
-      </label>
-      <button onClick={handleLogin} className="btn btn-default" >Log In</button>
+    <section className="login-container">
+      <div className="form-group">
+        <label className="plain-text" forHTML="username">Username:
+          <input 
+            className="login"
+            type="text" 
+            onChange={handleInputChange} 
+            value={input.username} 
+            name="username"
+            id="username" />
+        </label>
+      </div>
+      <div className="form-group">
+        <label className="plain-text">Password:
+          <input 
+            className="login"
+            type="password" 
+            onChange={handleInputChange} 
+            value={input.password} 
+            name="password" 
+            id="password"/>
+        </label>
+      </div>
+      <button onClick={handleLogin} className="btn btn-medium btn-info" >Log In</button>
       {loggedIn ? <Redirect to="/" /> : ""}
-    </div>
+    </section>
   )
 }
 
