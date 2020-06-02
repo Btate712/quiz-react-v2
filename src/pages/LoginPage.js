@@ -39,7 +39,7 @@ const LoginPage = () => {
           value={input.password} 
           name="password" />
       </label>
-      <button onClick={handleLogin} className="login" >Log In</button>
+      <button onClick={handleLogin} className="btn btn-default" >Log In</button>
       {loggedIn ? <Redirect to="/" /> : ""}
     </div>
   )
