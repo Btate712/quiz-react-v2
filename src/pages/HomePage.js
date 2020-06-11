@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProjects } from '../actions/projectActions';
+import { ProjectList } from '../components/ProjectList';
 
 const HomePage = () => {
   const user = useSelector(state => state.user);
@@ -23,7 +24,7 @@ const HomePage = () => {
       <h1>Home Page...</h1>
       <h2>Welcome {user.name ? user.name : "loading"}</h2>
       <h3>Projects:</h3>
-      { projects.projectList.map(project => project.name) }
+      <ProjectList projects={projects} />
       <br />
       <button onClick={updateProjectsList}>Click Me!</button>
       <br />
