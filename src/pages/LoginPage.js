@@ -24,7 +24,7 @@ const LoginPage = () => {
   return (
     <section className="login-container">
       <div className="form-group">
-        <label className="plain-text" forHTML="username">Username:
+        <label className="plain-text" htmlFor="username">Username:
           <input 
             className="login"
             type="text" 

@@ -12,7 +12,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getProjects(user.token));
-  }, []);
+  }, [user]);
 
   const updateProjectsList = () => {
     setSelectedProjects(currentSelectedProjects => [...currentSelectedProjects, "and another"]);
