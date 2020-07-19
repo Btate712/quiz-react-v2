@@ -35,3 +35,20 @@ export function login(url, username, password) {
 export function initializeUser() {
   return dispatch => dispatch({ type: "INITIALIZE_USER" });
 }
+
+export function register(url, user) {
+  return dispatch => {
+    const configurationObject = {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(user)
+    }
+    fetch(`${url}/users`, configurationObject)
+      .then(response => response.json())
+      .then(() => dispatch(login(url, user.name, user.password)));    
+  }
+}

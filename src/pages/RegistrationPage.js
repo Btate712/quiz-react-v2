@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { register } from '../actions/userActions';
+import { URL } from '../applicationConstants';
 
 const RegistrationPage = () => {
   const [user, setUser] = useState({ name: "", password: "" });
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.user);
 
   const handleInputChange = e => {
     setUser({ 
@@ -11,23 +17,30 @@ const RegistrationPage = () => {
   }
 
   const handleSubmit = () => {
-    alert(`Creating new user with name: ${user.name} and password: ${user.password}`);
+    dispatch(register(URL, user));
   }
 
   return (
     <>
       <h2>Registration:</h2>
-      <label name="name">
-        User Name:
+      <label htmlFor="name">
+        User Name: <br />
         <input name="name" type="text" value={user.name} onChange={handleInputChange}/>
       </label>
       <br />
-      <label name="password">
-        Password:
-        <input name="password" type="text" value={user.password} onChange={handleInputChange}/>
+      <label htmlFor="email">
+        Email: <br />
+        <input name="email" type="email" value={user.email} onChange={handleInputChange}/>
+      </label>
+      <br />
+      <label htmlFor="password">
+        Password: <br />
+        <input name="password" type="password" value={user.password} onChange={handleInputChange}/>
       </label>
       <br />
       <button onClick={handleSubmit}>Register New User</button>
+      { currentUser.inProgress && <p>Registering. Please stand by...</p> }
+      { currentUser.loggedIn && <Redirect to="/" /> }
     </>
   )
 }
