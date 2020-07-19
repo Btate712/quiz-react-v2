@@ -21,7 +21,6 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      <h1>Home Page...</h1>
       <h2>Welcome {user.name ? user.name : "loading"}</h2>
       <h3>Projects:</h3>
       <ProjectList projects={projects} />
