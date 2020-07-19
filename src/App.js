@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import RegistrationPage from './pages/RegistrationPage';
 import PageTemplate from './components/PageTemplate';
 import { initializeUser } from './actions/userActions';
 
@@ -26,6 +27,7 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/" component={HomePage} loggedIn={loggedIn} />
             <Route path="/login" component={LoginPage} />
+            <Route path="/registration" component={RegistrationPage} />
           </Switch>
         </div>
       </div>

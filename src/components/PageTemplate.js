@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PageTemplate = props => {
   return (
@@ -8,7 +9,7 @@ const PageTemplate = props => {
       </header>
       <nav className="navbar">
         <ul>
-          <li className="navbar-nav">Register</li>
+          <li className="navbar-nav"><Link to="/registration">Register</Link></li>
         </ul>
       </nav>
     </>
