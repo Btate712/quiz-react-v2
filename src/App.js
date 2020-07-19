@@ -13,7 +13,6 @@ function App() {
   const user = useSelector(state => state.user);
 
   if(!user.initialized) {
-    console.log("initializing user");
     dispatch(initializeUser(), []);
   }
 
